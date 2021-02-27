@@ -1,4 +1,6 @@
 module.exports = {
+  plugins: ["gatsby-plugin-theme-ui"],
+
   siteMetadata: {
     title: `Gatsby Starter Blog`,
     author: {
@@ -25,6 +27,12 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("node-sass"),
       },
     },
     {
@@ -73,6 +81,8 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-sass`,
+    "gatsby-plugin-styled-components",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

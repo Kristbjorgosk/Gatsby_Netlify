@@ -8,10 +8,7 @@ const BlogIndex = ({ location, cards }) => {
     <Layout location={location}>
       <SEO title="All posts" />
 
-      <p>
-        <Link to="/blogPosts">Næsta síða</Link>
-      </p>
-      
+      <p>About</p>
     </Layout>
   )
 }
