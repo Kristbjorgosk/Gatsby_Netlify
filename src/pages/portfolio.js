@@ -1,4 +1,5 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { Card } from "react-bootstrap"
 import Layout from "../components/layout"
 
@@ -22,3 +23,26 @@ const Projects = ({ data, location }) => {
 }
 
 export default Projects
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
+      }
+    }
+  }
+`
