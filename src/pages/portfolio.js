@@ -1,48 +1,35 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Card } from "react-bootstrap"
 
 const Portfolio = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
-
-  if (posts.length === 0) {
-    return (
-      <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" />
-        <Bio />
-        <p>
-          No projects found. Add markdown posts to "content/projects" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
-      </Layout>
-    )
-  }
+  const projects = data.allMarkdownRemark.nodes
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
 
       <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+        {projects.map(project => {
+          const title = project.frontmatter.title || project.fields.slug
+          const description =
+            project.frontmatter.description || project.fields.slug
+          const liveDemo = project.frontmatter.liveDemo || project.fields.slug
+          const github = project.frontmatter.github || project.fields.slug
 
           return (
-            <li key={post.fields.slug}>
-              <Card style={{ width: "18rem" }}>
-                <Card.Img />
-                <Card.Body>
-                  <Card.Title> {post.frontmatter.title} </Card.Title>
-                  <Card.Text>{post.frontmatter.description}</Card.Text>
-                  <Card.Link href="#">{post.frontmatter.liveDemo}</Card.Link>
-                  <Card.Link href="#">{post.frontmatter.github}</Card.Link>
-                </Card.Body>
-              </Card>
-            </li>
+            <Card style={{ width: "18rem" }}>
+              <Card.Img />
+              <Card.Body>
+                <Card.Title> {title} </Card.Title>
+                <Card.Text>{description}</Card.Text>
+                <Card.Link href={liveDemo}>live Demo</Card.Link>
+                <Card.Link href={github}>GitHub</Card.Link>
+              </Card.Body>
+            </Card>
           )
         })}
       </ol>
@@ -75,6 +62,9 @@ export const query = graphql`
         frontmatter {
           title
           description
+          date
+          liveDemo
+          github
         }
       }
     }

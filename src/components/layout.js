@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "gatsby"
-import "bootstrap/dist/css/bootstrap.min.css"
 import Navbar from "./Navbar/Navbar"
 
 const Layout = ({ location, title, children }) => {

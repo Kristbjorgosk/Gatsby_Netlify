@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "./global.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import { Form } from "react-bootstrap"
 
 const BlogIndex = ({ location, cards }) => {
