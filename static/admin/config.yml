@@ -32,14 +32,14 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "Title", name: "projectTitle", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
       - {
           label: "Featured Image",
           name: "thumbnail",
           widget: "image",
           required: false,
         }
-      - { label: "Description", name: "projectDescription", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
       - { label: "Live demo", name: "liveDemo", widget: "string" }
       - { label: "Github", name: "github", widget: "string" }
-      - { label: "Body", name: "projectBody", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown" }
