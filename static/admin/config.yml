@@ -43,9 +43,9 @@ collections:
       - { label: "Live demo", name: "liveDemo", widget: "string" }
       - { label: "Github", name: "github", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
-  - name: "aboutMe"
+  - name: "about"
     label: "About Me"
-    folder: "content/aboutMe"
+    folder: "content/about"
     create: true
     slug: "{{slug}}"
     media_folder: ""
