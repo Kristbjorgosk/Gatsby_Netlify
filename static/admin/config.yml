@@ -54,5 +54,5 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "Title", name: "itle", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
