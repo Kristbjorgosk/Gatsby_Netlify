@@ -120,6 +120,64 @@ exports.createProjectPages = async ({ graphql, actions, reporter }) => {
 
 ///////////////
 
+/////////////////
+
+exports.creatAboutPage = async ({ graphql, actions, reporter }) => {
+  const { creatAboutPage } = actions
+
+  // Define a template for projects
+  const aboutPost = path.resolve(`./src/templates/about.js`)
+
+  // Get all markdown projects sorted by date
+  const result = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: ASC }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `There was an error loading the about page`,
+      result.errors
+    )
+    return
+  }
+
+  const abouts = result.data.allMarkdownRemark.nodes
+
+  // Create blog posts pages
+  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
+  // `context` is available in the template as a prop and as a variable in GraphQL
+
+  if (abouts.length > 0) {
+    abouts.forEach(about => {
+      creatAboutPage({
+        path: post.fields.slug,
+        component: aboutPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
+        },
+      })
+    })
+  }
+}
+
+///////////////
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
