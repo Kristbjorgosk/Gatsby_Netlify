@@ -32,33 +32,38 @@ const BlogIndex = ({ data, location }) => {
 
           return (
             <li key={post.fields.slug}>
-              <Link to={post.fields.slug} itemProp="url">
-                <article
-                  className="post-list-item"
-                  itemScope
-                  itemType="http://schema.org/Article"
-                >
-                  <div className="blogContainer">
-                    <header>
-                      <h2 className="blogContainer-headline">
-                        <span itemProp="headline">{title}</span>
-                      </h2>
-                      <small className="blogContainer-date">
-                        {post.frontmatter.date}
-                      </small>
-                    </header>
-                    <section>
-                      <p
-                        className="blogContainer-description"
-                        dangerouslySetInnerHTML={{
-                          __html: post.frontmatter.description || post.excerpt,
-                        }}
-                        itemProp="description"
-                      />
-                    </section>
-                  </div>
-                </article>
-              </Link>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <div className="blogContainer">
+                  <header>
+                    <h2 className="blogContainer-headline">
+                      <Link to={post.fields.slug} itemProp="url">
+                        <span
+                          className="blogContainer-headline-hover"
+                          itemProp="headline"
+                        >
+                          {title}
+                        </span>
+                      </Link>
+                    </h2>
+                    <small className="blogContainer-date">
+                      {post.frontmatter.date}
+                    </small>
+                  </header>
+                  <section>
+                    <p
+                      className="blogContainer-description"
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                  </section>
+                </div>
+              </article>
             </li>
           )
         })}

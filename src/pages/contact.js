@@ -12,23 +12,27 @@ const Contact = ({ location, cards }) => {
       <form
         name="contact"
         method="POST"
+        netlify-honeypot="bot-field"
         data-netlify-recaptcha="true"
         data-netlify="true"
-        action="/"
+        action="/message-sent"
       >
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="contact" />
         <p>
           <label>
-            Name: <input type="text" name="name" />
+            Name: <input type="text" name="name" required="true" />
           </label>
         </p>
         <p>
           <label>
-            Email: <input type="text" name="email" />
+            Email: <input type="text" name="email" required="true" />
           </label>
         </p>
         <p>
           <label>
-            Message: <textarea name="message"></textarea>
+            Message:{" "}
+            <textarea name="message" rows="8" required="true"></textarea>
           </label>
         </p>
         <div data-netlify-recaptcha="true"></div>
