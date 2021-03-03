@@ -1,14 +1,15 @@
 button {
-    border-radius: 8px;
-    background-color: rgb(255, 25, 205);
+    border-radius: 5px;
+    background-color: rgb(247, 155, 255);
     color: white;
     width: 100%;
     border: none;
     padding: 10px;
+    cursor: pointer;
 }
 
 button:hover {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    background-color: rgb(244, 129, 255);
 }
 
 .grid-container {
@@ -26,4 +27,23 @@ button:hover {
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
     text-align: center;
+}
+
+.blogContainer {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(159, 159, 159, 0.24) 0px 3px 8px;
+}
+
+Link {
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+.blogContainer:hover {
+    box-shadow: rgba(81, 81, 81, 0.24) 0px 3px 8px;
 }

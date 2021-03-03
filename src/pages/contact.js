@@ -1,43 +1,46 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "./global.css"
-import "bootstrap/dist/css/bootstrap.min.css"
-import { Form } from "react-bootstrap"
+import "./contact.module.css"
 
-const BlogIndex = ({ location, cards }) => {
+const Contact = ({ location, cards }) => {
   return (
     <Layout location={location}>
       <SEO title="All posts" />
-
       <form
         name="contact"
         method="POST"
-        netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
         data-netlify="true"
+        action="/"
       >
-        <Form>
-          <Form.Group controlId="formGroupEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-          <Form.Group controlId="formGroupName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="name" placeholder="Name" />
-          </Form.Group>
-          <Form.Group controlId="formGroupTextarea">
-            <Form.Label>Messasge</Form.Label>
-            <Form.Control type="textarea" placeholder="Messasge" />
-          </Form.Group>
+        <p>
+          <label>
+            Name: <input type="text" name="name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Email: <input type="text" name="email" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Message: <textarea name="message"></textarea>
+          </label>
+        </p>
+        <div data-netlify-recaptcha="true"></div>
+        <p>
           <button type="submit">Send</button>
-        </Form>
+        </p>
       </form>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default Contact
 
 export const pageQuery = graphql`
   query {

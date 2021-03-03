@@ -26,9 +26,9 @@ const Layout = ({ location, title, children }) => {
       <header className="global-header">
         <Navbar />{" "}
       </header>
-      <main>{children}</main>
+      <main className="main-content">{children}</main>
       <footer>
-        © {new Date().getFullYear()}, Kristbjörg
+        © {new Date().getFullYear()}, Kristbjörg Óskarsdóttir
         {` `}
       </footer>
     </div>

@@ -30,7 +30,7 @@ const Toggle = styled.div`
   display: none;
   height: 100%;
   cursor: pointer;
-  padding: 0 10vw;
+  // padding: 0 10vw;
 
   @media (max-width: 768px) {
     display: flex;
@@ -48,10 +48,11 @@ const Navbox = styled.div`
     position: fixed;
     width: 100%;
     justify-content: flex-start;
-    padding-top: 10vh;
+    padding-top: 5vh;
     background-color: #fff;
     transition: all 0.3s ease-in;
     top: 8vh;
+    margin-top: 30px;
     left: ${props => (props.open ? "-100%" : "0")};
   }
 `

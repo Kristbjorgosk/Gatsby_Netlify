@@ -56,7 +56,7 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/projects/" } }) {
       nodes {
         excerpt
         fields {
