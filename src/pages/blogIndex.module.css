@@ -1,0 +1,9 @@
+.blogContainer {
+    margin: 20px;
+    padding: 20px;
+    border-bottom: rgba(248, 176, 255, 0.772) solid 1px;
+    border-left: rgb(244, 129, 255) solid 1px;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}

@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import "./blogIndex.module.css"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -39,13 +40,16 @@ const BlogIndex = ({ data, location }) => {
                 >
                   <div className="blogContainer">
                     <header>
-                      <h2>
+                      <h2 className="blogContainer-headline">
                         <span itemProp="headline">{title}</span>
                       </h2>
-                      <small>{post.frontmatter.date}</small>
+                      <small className="blogContainer-date">
+                        {post.frontmatter.date}
+                      </small>
                     </header>
                     <section>
                       <p
+                        className="blogContainer-description"
                         dangerouslySetInnerHTML={{
                           __html: post.frontmatter.description || post.excerpt,
                         }}

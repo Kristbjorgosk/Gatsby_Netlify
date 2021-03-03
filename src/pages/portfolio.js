@@ -1,9 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import "./portfolio.module.css"
 import "./global.css"
-import { Card, CardDeck } from "react-bootstrap"
 
 const Portfolio = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -11,7 +11,7 @@ const Portfolio = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All Projects" />
+      <SEO title="Portfolio" />
 
       <ol style={{ listStyle: `none` }}>
         {projects.map(project => {
@@ -22,17 +22,15 @@ const Portfolio = ({ data, location }) => {
           const github = project.frontmatter.github || project.fields.slug
 
           return (
-            <CardDeck>
-              <Card style={{ width: "18rem" }}>
-                <Card.Img src="https://www.citypng.com/public/uploads/preview/imac-website-mockup-front-view-11581292045iqfo2eatcc.png" />
-                <Card.Body>
-                  <Card.Title> {title} </Card.Title>
-                  <Card.Text>{description}</Card.Text>
-                  <Card.Link href={liveDemo}>live Demo</Card.Link>
-                  <Card.Link href={github}>GitHub</Card.Link>
-                </Card.Body>
-              </Card>
-            </CardDeck>
+            <div className="portfolio-card">
+              <img src="https://www.citypng.com/public/uploads/preview/imac-website-mockup-front-view-11581292045iqfo2eatcc.png" />
+              <div>
+                <h1> {title} </h1>
+                <p>{description}</p>
+                <Link href={liveDemo}>live Demo</Link>
+                <Link href={github}>GitHub</Link>
+              </div>
+            </div>
           )
         })}
       </ol>

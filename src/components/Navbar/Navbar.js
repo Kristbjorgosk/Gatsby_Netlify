@@ -10,13 +10,13 @@ const Navigation = styled.nav`
   position: relative;
   justify-content: space-between;
   text-transform: uppercase;
-  border-bottom: 2px solid #33333320;
+  // border-bottom: 2px solid #33333320;
   margin: 0 auto;
   padding: 0 5vw;
   z-index: 2;
   align-self: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     position: sticky;
     height: 8vh;
     top: 0;
@@ -32,7 +32,7 @@ const Toggle = styled.div`
   cursor: pointer;
   // padding: 0 10vw;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     display: flex;
   }
 `
@@ -43,7 +43,7 @@ const Navbox = styled.div`
   justify-content: flex-end;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     position: fixed;
     width: 100%;
@@ -58,7 +58,7 @@ const Navbox = styled.div`
 `
 
 const Hamburger = styled.div`
-  background-color: #111;
+  background-color: rgb(247, 155, 255);
   width: 30px;
   height: 3px;
   transition: all 0.3s linear;
@@ -70,7 +70,7 @@ const Hamburger = styled.div`
   ::after {
     width: 30px;
     height: 3px;
-    background-color: #111;
+    background-color: rgb(247, 155, 255);
     content: "";
     position: absolute;
     transition: all 0.3s linear;

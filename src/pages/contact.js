@@ -8,7 +8,7 @@ import "./contact.module.css"
 const Contact = ({ location, cards }) => {
   return (
     <Layout location={location}>
-      <SEO title="All posts" />
+      <SEO title="Contact Form" />
       <form
         name="contact"
         method="POST"

@@ -13,12 +13,33 @@ html {
     margin-top: 20px;
 }
 
+@media (max-width: 768px) {
+    html {
+        width: 100%;
+    }
+}
+
 a {
     text-decoration: none;
+    color: black;
 }
 
 a:hover {
-    color: rgb(255, 41, 191);
+    color: rgb(244, 129, 255);
+}
+
+button {
+    border-radius: 2px;
+    background-color: rgb(247, 155, 255);
+    color: white;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(244, 129, 255);
 }
 
 .logoName {
@@ -27,11 +48,72 @@ a:hover {
 }
 
 .logoName:hover {
-    color: rgb(255, 41, 191);
+    color: rgb(244, 129, 255);
     font-weight: 700;
     text-decoration: none;
 }
 
 .main-content {
     padding: 20px;
+}
+
+.footer-content {
+    margin-top: 3rem;
+    padding: 0 5vw;
+    margin-bottom: 3rem;
+}
+
+/* BLOG INDEX.js */
+
+.blogContainer {
+    margin: 20px;
+    padding: 20px;
+    border-bottom: rgba(248, 176, 255, 0.772) solid 3px;
+    border-left: rgb(244, 129, 255) solid 1px;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.blogContainer-headline {
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.blogContainer-description {
+    margin-top: 0.5rem;
+    color: rgb(132, 132, 132);
+}
+
+.blogContainer-date {
+    color: rgb(132, 132, 132);
+}
+
+/* BLOG-POST.js in TEMPLATES */
+
+.blog-post {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+
+.blog-post-nav {
+    padding: 0 5vw;
+}
+
+.blog-post-title {
+    color: rgb(244, 129, 255);
+}
+
+.blog-post-date {
+    margin-bottom: 2rem;
+    color: rgb(132, 132, 132);
+}
+
+/* PORTFOLIO.JS */
+
+.portfolio-card {
+    border: hotpink solid 2px;
+    display: grid;
+    margin: 0 auto;
 }

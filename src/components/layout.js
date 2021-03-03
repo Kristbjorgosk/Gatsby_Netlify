@@ -27,7 +27,7 @@ const Layout = ({ location, title, children }) => {
         <Navbar />{" "}
       </header>
       <main className="main-content">{children}</main>
-      <footer>
+      <footer className="footer-content">
         © {new Date().getFullYear()}, Kristbjörg Óskarsdóttir
         {` `}
       </footer>

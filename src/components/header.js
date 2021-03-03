@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { Link } from "gatsby"
-import styles from "./header.module.css"
 
-import Navbar from "./Navbar/Navbar"
+import styles from "./header.module.css"
 
 const Header = props => (
   <header>

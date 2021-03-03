@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import "../globalComp.css"
 
 const LogoWrap = styled.div`
   margin: auto 0;
-  flex: 0 1 36px;
+  flex: 0 1 155px;
 
   @media (max-width: 768px) and (orientation: landscape) {
     flex: 0 1 25px;
@@ -26,7 +25,7 @@ const Logo = () => {
 
   return (
     <LogoWrap as={Link} to="/">
-      <p className="logoName">Kristbjörg Óskarsdóttir</p>
+      <h1 className="logoName">Kristbjörg Ósk</h1>
     </LogoWrap>
   )
 }
