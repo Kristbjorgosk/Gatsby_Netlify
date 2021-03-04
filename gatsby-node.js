@@ -60,8 +60,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
 /////////////////
 
-exports.createProjectPages = async ({ graphql, actions, reporter }) => {
-  const { createProjectPages } = actions
+exports.createPage = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
 
   // Define a template for projects
   const projectsPost = path.resolve(`./src/templates/projects.js`)
@@ -105,7 +105,7 @@ exports.createProjectPages = async ({ graphql, actions, reporter }) => {
       const nextPostId =
         index === projects.length - 1 ? null : projects[index + 1].id
 
-      createProjectPages({
+      createPage({
         path: post.fields.slug,
         component: projectsPost,
         context: {
@@ -122,8 +122,8 @@ exports.createProjectPages = async ({ graphql, actions, reporter }) => {
 
 /////////////////
 
-exports.creatAboutPage = async ({ graphql, actions, reporter }) => {
-  const { creatAboutPage } = actions
+exports.createPage = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
 
   // Define a template for projects
   const aboutPost = path.resolve(`./src/templates/about.js`)
@@ -163,7 +163,7 @@ exports.creatAboutPage = async ({ graphql, actions, reporter }) => {
 
   if (abouts.length > 0) {
     abouts.forEach(about => {
-      creatAboutPage({
+      createPage({
         path: post.fields.slug,
         component: aboutPost,
         context: {
