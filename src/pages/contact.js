@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import "./global.css"
 import "./contact.module.css"
 
-const Contact = ({ location, cards }) => {
+const Contact = ({ location }) => {
   return (
     <Layout location={location}>
       <SEO title="Contact Form" />
@@ -13,7 +13,6 @@ const Contact = ({ location, cards }) => {
         name="contact"
         method="POST"
         netlify-honeypot="bot-field"
-        data-netlify-recaptcha="true"
         data-netlify="true"
         action="/message-sent"
       >
@@ -35,7 +34,6 @@ const Contact = ({ location, cards }) => {
             <textarea name="message" rows="8" required="true"></textarea>
           </label>
         </p>
-        <div data-netlify-recaptcha="true"></div>
         <p>
           <button type="submit">Send</button>
         </p>
