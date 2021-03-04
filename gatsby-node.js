@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const project = path.resolve(`./src/templates/projects.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -45,133 +46,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
+      createPage(
+        {
+          path: post.fields.slug,
+          component: blogPost,
+          context: {
+            id: post.id,
+            previousPostId,
+            nextPostId,
+          },
         },
-      })
-    })
-  }
-}
-
-/////////////////
-
-exports.createPage = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
-  // Define a template for projects
-  const projectsPost = path.resolve(`./src/templates/projects.js`)
-
-  // Get all markdown projects sorted by date
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
-            }
-          }
+        {
+          path: post.fields.slug,
+          component: project,
+          context: {
+            id: post.id,
+            previousPostId,
+            nextPostId,
+          },
         }
-      }
-    `
-  )
-
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your projects`,
-      result.errors
-    )
-    return
-  }
-
-  const projects = result.data.allMarkdownRemark.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (projects.length > 0) {
-    projects.forEach((project, index) => {
-      const previousPostId = index === 0 ? null : projects[index - 1].id
-      const nextPostId =
-        index === projects.length - 1 ? null : projects[index + 1].id
-
-      createPage({
-        path: post.fields.slug,
-        component: projectsPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
-    })
-  }
-}
-
-///////////////
-
-/////////////////
-
-exports.createPage = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-
-  // Define a template for projects
-  const aboutPost = path.resolve(`./src/templates/about.js`)
-
-  // Get all markdown projects sorted by date
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading the about page`,
-      result.errors
-    )
-    return
-  }
-
-  const abouts = result.data.allMarkdownRemark.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (abouts.length > 0) {
-    abouts.forEach(about => {
-      createPage({
-        path: post.fields.slug,
-        component: aboutPost,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
+      )
     })
   }
 }
