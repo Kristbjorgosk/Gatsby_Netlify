@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const project = path.resolve(`./src/templates/projects.js`)
+  const portfolio = path.resolve(`./src/templates/projects.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -46,26 +46,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
-      createPage(
-        {
-          path: post.fields.slug,
-          component: blogPost,
-          context: {
-            id: post.id,
-            previousPostId,
-            nextPostId,
-          },
+      createPage({
+        path: post.fields.slug,
+        component: blogPost,
+        context: {
+          id: post.id,
+          previousPostId,
+          nextPostId,
         },
-        {
-          path: post.fields.slug,
-          component: project,
-          context: {
-            id: post.id,
-            previousPostId,
-            nextPostId,
-          },
-        }
-      )
+      })
+    })
+  }
+
+  const projects = result.data.allMarkdownRemark.nodes
+  if (projects.length > 0) {
+    projects.forEach((project, index) => {
+      const previousPostId = index === 0 ? null : projects[index - 1].id
+      const nextPostId =
+        index === projects.length - 1 ? null : projects[index + 1].id
+
+      createPage({
+        path: project.fields.slug,
+        component: portfolio,
+        context: {
+          id: project.id,
+          previousPostId,
+          nextPostId,
+        },
+      })
     })
   }
 }
