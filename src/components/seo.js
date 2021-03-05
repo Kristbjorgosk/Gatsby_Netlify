@@ -55,7 +55,7 @@ const SEO = ({ description, lang, meta, title }) => {
           content: `website`,
         },
         {
-          name: `twitter:card`,
+          name: `instagram:card`,
           content: `summary`,
         },
         {
