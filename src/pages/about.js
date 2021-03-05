@@ -3,12 +3,18 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogIndex = ({ location, cards }) => {
+const BlogIndex = ({ location, data }) => {
+  const about = data.allMarkdownRemark.nodes
+  const title = about[0].frontmatter.title || about[0].fields.slug
+  const html = about[0].html || about[0].fields.slug
+
   return (
     <Layout location={location}>
       <SEO title="All posts" />
 
-      <p>About</p>
+      <h1> {title} </h1>
+
+      <section dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
 }
@@ -17,22 +23,19 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/(/about)/" } }) {
+      nodes {
+        frontmatter {
+          title
+        }
+        html
+      }
+    }
     site {
       siteMetadata {
         title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
+        description
+        siteUrl
       }
     }
   }

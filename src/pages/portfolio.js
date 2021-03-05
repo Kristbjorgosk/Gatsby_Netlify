@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Img from "gatsby-image"
 import "./portfolio.module.css"
 import "./global.css"
 
@@ -20,10 +21,13 @@ const Portfolio = ({ data, location }) => {
             project.frontmatter.description || project.fields.slug
           const liveDemo = project.frontmatter.liveDemo || project.fields.slug
           const github = project.frontmatter.github || project.fields.slug
+          let featuredImgFluid =
+            project.frontmatter.featuredImage.childImageSharp.fluid
 
           return (
             <div className="portfolio-card">
-              <img src="https://www.citypng.com/public/uploads/preview/imac-website-mockup-front-view-11581292045iqfo2eatcc.png" />
+              <Img fluid={featuredImgFluid} />
+
               <div>
                 <h1> {title} </h1>
                 <p>{description}</p>
@@ -61,13 +65,17 @@ export const query = graphql`
           slug
         }
         frontmatter {
-          thumbnail {
-            absolutePath
-          }
           title
           description
           liveDemo
           github
+          featuredImage {
+            childImageSharp {
+              fluid(maxWidth: 600) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

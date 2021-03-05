@@ -2,15 +2,15 @@ module.exports = {
   plugins: ["gatsby-plugin-theme-ui"],
 
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Kristbjörg Ósk porfolio & blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Kristbjörg Ósk Óskarsdóttir`,
+      summary: `Frontend developer based in Reykjavík Iceland`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `My webprojects portfolio & blog`,
+    siteUrl: `https://kristbjorg.netlify.app/`,
     social: {
-      twitter: `kylemathews`,
+      instagram: `kristbjorgosk`,
     },
   },
 
@@ -27,6 +27,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/projects`,
         name: `projects`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/about`,
+        name: `about`,
       },
     },
     {

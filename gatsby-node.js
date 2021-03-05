@@ -6,6 +6,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const portfolio = path.resolve(`./src/templates/projects.js`)
+  const about = path.resolve(`./src/templates/about.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -56,48 +58,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
-}
-
-/////////////////
-
-exports.createProjectPages = async ({ graphql, actions, reporter }) => {
-  const { createProjectPages } = actions
-
-  // Define a template for projects
-  const projectsPost = path.resolve(`./src/templates/projects.js`)
-
-  // Get all markdown projects sorted by date
-  const result = await graphql(
-    `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
-
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your projects`,
-      result.errors
-    )
-    return
-  }
 
   const projects = result.data.allMarkdownRemark.nodes
+  const abouts = result.data.allMarkdownRemark.nodes
+  createPage()
 
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
+  console.log(abouts)
 
   if (projects.length > 0) {
     projects.forEach((project, index) => {
@@ -105,11 +71,11 @@ exports.createProjectPages = async ({ graphql, actions, reporter }) => {
       const nextPostId =
         index === projects.length - 1 ? null : projects[index + 1].id
 
-      createProjectPages({
-        path: post.fields.slug,
-        component: projectsPost,
+      createPage({
+        path: project.fields.slug,
+        component: portfolio,
         context: {
-          id: post.id,
+          id: project.id,
           previousPostId,
           nextPostId,
         },

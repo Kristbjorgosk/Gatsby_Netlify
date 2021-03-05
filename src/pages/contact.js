@@ -18,6 +18,7 @@ const Contact = ({ location }) => {
       >
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="subject" value="subject" />
         <p>
           <label>
             Name: <input type="text" name="name" required="true" />
