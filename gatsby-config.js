@@ -7,7 +7,7 @@ module.exports = {
       name: `Kristbjörg Ósk Óskarsdóttir`,
       summary: `Frontend developer based in Reykjavík Iceland`,
     },
-    description: `My webprojects portfolio & blog`,
+    description: `My web projects portfolio & blog`,
     siteUrl: `https://kristbjorg.netlify.app/`,
     social: {
       instagram: `kristbjorgosk`,
@@ -41,12 +41,6 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/`,
       },
     },
     {
