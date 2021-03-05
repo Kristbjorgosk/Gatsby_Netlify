@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const BlogIndex = ({ location, data }) => {
+const AboutMe = ({ location, data }) => {
   const about = data.allMarkdownRemark.nodes
   const title = about[0].frontmatter.title || about[0].fields.slug
   const html = about[0].html || about[0].fields.slug
@@ -19,7 +19,7 @@ const BlogIndex = ({ location, data }) => {
   )
 }
 
-export default BlogIndex
+export default AboutMe
 
 export const pageQuery = graphql`
   query {
