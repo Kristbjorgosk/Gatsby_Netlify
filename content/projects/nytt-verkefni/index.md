@@ -1,6 +1,6 @@
 ---
 title: "Nytt verkefni "
-featuredImage: screenshot-2020-10-28-at-19.39.51.png
+thumbnail: screenshot-2020-10-28-at-19.39.51.png
 description: "Skóla verkefni / Hópverkefni "
 liveDemo: https://www.visir.is/
 github: https://www.google.is/

@@ -21,12 +21,11 @@ const Portfolio = ({ data, location }) => {
             project.frontmatter.description || project.fields.slug
           const liveDemo = project.frontmatter.liveDemo || project.fields.slug
           const github = project.frontmatter.github || project.fields.slug
-          let featuredImgFluid =
-            project.frontmatter.featuredImage.childImageSharp.fluid
+          const thumbnail = project.frontmatter.thumbnail.childImageSharp.fluid
 
           return (
             <div className="portfolio-card">
-              <Img fluid={featuredImgFluid} />
+              <Img fluid={thumbnail} />
 
               <div>
                 <h1> {title} </h1>
@@ -69,7 +68,7 @@ export const query = graphql`
           description
           liveDemo
           github
-          featuredImage {
+          thumbnail {
             childImageSharp {
               fluid(maxWidth: 600) {
                 ...GatsbyImageSharpFluid
