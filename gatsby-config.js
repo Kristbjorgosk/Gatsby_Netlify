@@ -44,6 +44,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-sass`,
       options: {
         implementation: require("node-sass"),
