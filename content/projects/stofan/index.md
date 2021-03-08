@@ -1,5 +1,6 @@
 ---
 title: STOFAN
+thumbnail: stofan.png
 description: First school group project using HTML and CSS
 liveDemo: https://huldas96.github.io/Stofan/
 github: https://github.com/Huldas96/Stofan
