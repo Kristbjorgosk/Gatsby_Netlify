@@ -128,12 +128,48 @@ button:hover {
 
 /* PORTFOLIO.JS */
 
+.potfolioGrid { 
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+@media (max-width: 1010px) {
+    .potfolioGrid {
+    display: grid;
+    grid-template-columns: auto auto ;
+    justify-content: center;
+    }
+}
+@media (max-width: 668px) {
+    .potfolioGrid {
+    display: grid;
+    grid-template-columns: auto  ;
+    justify-content: center;
+    }
+}
+
 .portfolio-card {
-    border: hotpink solid 2px;
+    padding: 25px;
     display: grid;
     margin: 0 auto;
+    width: 300px;
+    height: 400px;
+}
+
+.portfolio-img {
+    height: 220px;
+    width: 100%;
 }
 
 .messageSent {
     margin: 0 auto;
+}
+
+/* AboutMe.js */
+
+.aboutContainer {
+    padding-top: 3rem;;
+        max-width: 80%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
 }

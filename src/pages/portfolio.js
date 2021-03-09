@@ -3,7 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
-import "./portfolio.module.css"
+import styles from "./portfolio.module.css"
 import "./global.css"
 
 const Portfolio = ({ data, location }) => {
@@ -14,24 +14,30 @@ const Portfolio = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="Portfolio" />
 
-      <ol style={{ listStyle: `none` }}>
+      <ol className="potfolioGrid">
         {projects.map(project => {
           const title = project.frontmatter.title || project.fields.slug
           const description =
             project.frontmatter.description || project.fields.slug
           const liveDemo = project.frontmatter.liveDemo || project.fields.slug
           const github = project.frontmatter.github || project.fields.slug
-          const thumbnail = project.frontmatter.thumbnail.childImageSharp.fluid
+          const thumbnail =
+            project.frontmatter.thumbnail.childImageSharp.fluid ||
+            project.fields.slug
 
           return (
             <div className="portfolio-card">
-              <Img fluid={thumbnail} />
+              <Img className="portfolio-img" fluid={thumbnail} />
 
               <div>
                 <h1> {title} </h1>
                 <p>{description}</p>
-                <Link href={liveDemo}>live Demo</Link>
-                <Link href={github}>GitHub</Link>
+                <div className={styles.links}>
+                  <Link href={liveDemo}>live Demo</Link>
+                  <Link style={{ marginLeft: 20 }} href={github}>
+                    GitHub
+                  </Link>
+                </div>
               </div>
             </div>
           )

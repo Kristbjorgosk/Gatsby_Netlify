@@ -6,8 +6,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
-  const portfolio = path.resolve(`./src/templates/projects.js`)
-  const aboutMe = path.resolve(`./src/templates/about.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -58,51 +56,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       })
     })
   }
-
-  const projects = result.data.allMarkdownRemark.nodes
-
-  if (projects.length > 0) {
-    projects.forEach((project, index) => {
-      const previousPostId = index === 0 ? null : projects[index - 1].id
-      const nextPostId =
-        index === projects.length - 1 ? null : projects[index + 1].id
-
-      createPage({
-        path: project.fields.slug,
-        component: portfolio,
-        context: {
-          id: project.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
-    })
-  }
-
-  const abouts = result.data.allMarkdownRemark.nodes
-
-  console.log(abouts)
-
-  if (abouts.length > 0) {
-    abouts.forEach((about, index) => {
-      const previousPostId = index === 0 ? null : abouts[index - 1].id
-      const nextPostId =
-        index === abouts.length - 1 ? null : abouts[index + 1].id
-
-      createPage({
-        path: about.fields.slug,
-        component: aboutMe,
-        context: {
-          id: about.id,
-          previousPostId,
-          nextPostId,
-        },
-      })
-    })
-  }
 }
-
-///////////////
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -133,27 +87,22 @@ exports.createSchemaCustomization = ({ actions }) => {
       siteUrl: String
       social: Social
     }
-
     type Author {
       name: String
       summary: String
     }
-
     type Social {
-      instagram: String
+      twitter: String
     }
-
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
-
     type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
     }
-
     type Fields {
       slug: String
     }

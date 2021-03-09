@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const AboutMe = ({ location, data }) => {
+const About = ({ location, data }) => {
   const about = data.allMarkdownRemark.nodes
   const title = about[0].frontmatter.title || about[0].fields.slug
   const html = about[0].html || about[0].fields.slug
@@ -11,15 +11,16 @@ const AboutMe = ({ location, data }) => {
   return (
     <Layout location={location}>
       <SEO title="All posts" />
+      <div className="aboutContainer">
+        <h1> {title} </h1>
 
-      <h1> {title} </h1>
-
-      <section dangerouslySetInnerHTML={{ __html: html }} />
+        <section dangerouslySetInnerHTML={{ __html: html }} />
+      </div>
     </Layout>
   )
 }
 
-export default AboutMe
+export default About
 
 export const pageQuery = graphql`
   query {
